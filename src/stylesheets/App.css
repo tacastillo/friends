@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css?family=Bitter|Inconsolata");
+body, text {
+  font-family: "Inconsolata", sans-serif; }
+
+h1, h2, h3 {
+  font-family: "Bitter", serif; }
+
+h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 1rem; }
+
+.bg-container {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("../assets/friendshero.jpg");
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #999; }
+
+.chart-container {
+  display: flex; }
+  .chart-container .chart {
+    margin: auto; }
+
+.page {
+  height: 900px; }
+  .page h1 {
+    margin-bottom: 0; }

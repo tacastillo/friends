@@ -1,0 +1,13 @@
+.personalityRadar {
+  display: inline-block; }
+  .personalityRadar h2 {
+    margin-bottom: 0; }
+
+.personality-container {
+  display: flex; }
+
+.radar-container {
+  margin: auto; }
+
+.inline-container {
+  width: 975px; }

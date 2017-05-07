@@ -1,0 +1,204 @@
+[
+    [
+        {
+            "name": "RACHEL"
+        },
+        {
+            "name": "ROSS"
+        },
+        {
+            "name": "MONICA"
+        },
+        {
+            "name": "CHANDLER"
+        },
+        {
+            "name": "JOEY"
+        },
+        {
+            "name": "PHOEBE"
+        }
+    ],
+    [
+        {
+            "target": "ROSS",
+            "percent": 37,
+            "source": "RACHEL",
+            "value": 523
+        },
+        {
+            "target": "MONICA",
+            "percent": 15,
+            "source": "RACHEL",
+            "value": 215
+        },
+        {
+            "target": "CHANDLER",
+            "percent": 10,
+            "source": "RACHEL",
+            "value": 149
+        },
+        {
+            "target": "JOEY",
+            "percent": 23,
+            "source": "RACHEL",
+            "value": 333
+        },
+        {
+            "target": "PHOEBE",
+            "percent": 14,
+            "source": "RACHEL",
+            "value": 205
+        },
+        {
+            "target": "RACHEL",
+            "percent": 30,
+            "source": "ROSS",
+            "value": 235
+        },
+        {
+            "target": "MONICA",
+            "percent": 17,
+            "source": "ROSS",
+            "value": 135
+        },
+        {
+            "target": "CHANDLER",
+            "percent": 17,
+            "source": "ROSS",
+            "value": 135
+        },
+        {
+            "target": "JOEY",
+            "percent": 22,
+            "source": "ROSS",
+            "value": 175
+        },
+        {
+            "target": "PHOEBE",
+            "percent": 13,
+            "source": "ROSS",
+            "value": 99
+        },
+        {
+            "target": "RACHEL",
+            "percent": 16,
+            "source": "MONICA",
+            "value": 188
+        },
+        {
+            "target": "ROSS",
+            "percent": 18,
+            "source": "MONICA",
+            "value": 205
+        },
+        {
+            "target": "CHANDLER",
+            "percent": 24,
+            "source": "MONICA",
+            "value": 283
+        },
+        {
+            "target": "JOEY",
+            "percent": 20,
+            "source": "MONICA",
+            "value": 229
+        },
+        {
+            "target": "PHOEBE",
+            "percent": 22,
+            "source": "MONICA",
+            "value": 259
+        },
+        {
+            "target": "RACHEL",
+            "percent": 9,
+            "source": "CHANDLER",
+            "value": 66
+        },
+        {
+            "target": "ROSS",
+            "percent": 24,
+            "source": "CHANDLER",
+            "value": 178
+        },
+        {
+            "target": "MONICA",
+            "percent": 27,
+            "source": "CHANDLER",
+            "value": 197
+        },
+        {
+            "target": "JOEY",
+            "percent": 30,
+            "source": "CHANDLER",
+            "value": 220
+        },
+        {
+            "target": "PHOEBE",
+            "percent": 10,
+            "source": "CHANDLER",
+            "value": 70
+        },
+        {
+            "target": "RACHEL",
+            "percent": 14,
+            "source": "JOEY",
+            "value": 118
+        },
+        {
+            "target": "ROSS",
+            "percent": 39,
+            "source": "JOEY",
+            "value": 337
+        },
+        {
+            "target": "MONICA",
+            "percent": 14,
+            "source": "JOEY",
+            "value": 122
+        },
+        {
+            "target": "CHANDLER",
+            "percent": 25,
+            "source": "JOEY",
+            "value": 213
+        },
+        {
+            "target": "PHOEBE",
+            "percent": 9,
+            "source": "JOEY",
+            "value": 78
+        },
+        {
+            "target": "RACHEL",
+            "percent": 19,
+            "source": "PHOEBE",
+            "value": 149
+        },
+        {
+            "target": "ROSS",
+            "percent": 23,
+            "source": "PHOEBE",
+            "value": 184
+        },
+        {
+            "target": "MONICA",
+            "percent": 21,
+            "source": "PHOEBE",
+            "value": 168
+        },
+        {
+            "target": "CHANDLER",
+            "percent": 18,
+            "source": "PHOEBE",
+            "value": 143
+        },
+        {
+            "target": "JOEY",
+            "percent": 19,
+            "source": "PHOEBE",
+            "value": 155
+        }
+    ]
+]
