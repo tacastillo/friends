@@ -1,7 +1,8 @@
 {
-  "name": "web",
+  "name": "friends",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://tacastillo.github.io/friends",
   "dependencies": {
     "classnames": "^2.2.5",
     "d3": "^4.8.0",
