@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Chart from "./Chart";
-import { toTitleCase, color} from "./constants.js"
+import { toTitleCase, color } from "./constants.js"
 
 import './stylesheets/NetworkPage.css';
 
@@ -11,7 +11,6 @@ class NetworkPage extends Component {
     constructor(props) {
         super(props);
         this.names = data[0].map(node => node.name);
-        this.color = color;
         this.state = {
         	data: data,
         	focus: "",
@@ -32,7 +31,7 @@ class NetworkPage extends Component {
 				}, {});
     		return {
     			focus: name,
-    			color: this.color(name),
+    			color: color(name),
     			countMap: links
     		}
     	});
@@ -42,7 +41,7 @@ class NetworkPage extends Component {
     	let charList = data[0]
 	    	.filter(node => node.name)
 	    	.map(node => {
-	    		let highlight = (this.state.focus === node.name) ? { color: this.color(node.name) } : {};
+	    		let highlight = (this.state.focus === node.name) ? { color: color(node.name) } : {};
 	    		let count = this.state.countMap[node.name];
 	    		return (
 	    				<div key={node.name}>
@@ -58,13 +57,13 @@ class NetworkPage extends Component {
         return (
             <div className="network page">
 	        	<h1>The One Where They Talk To Each Other</h1>
+	        	<h4>Hover over each friend's bubble or name to see highlight their connections with others</h4>
 	        	<div className="chart-container">
 		            <Chart
 		            	className="network-chart"
 		                type={"force"}
 		                height={825}
 		                width={775}
-		                color={this.color}
 		                setFocus={this._focus}
 		                focus={this.state.focus}
 		                data={this.state.data}
@@ -73,6 +72,11 @@ class NetworkPage extends Component {
 		            	{charList}
 		            </div>
 	            </div>
+	            <div className="caption-container">
+                    <p className="caption">
+                        Ramping it up a bit, we are now going to look at a question less about what about they say, and focus more on "who" they say. Loosely inspired by the famous <a href="https://bost.ocks.org/mike/miserables/" target="_blank">Les Miserables Character Co-Occurences</a> data set, a network was constructed to visualize how many times a friend refers to any other given friend. The thickness of the link is associated with how many times the character of that matching color says the other person's name. <br/> Some of these connections are very obvious, such as Ross to Rachel and Chandler to Monica, and vice versa. What this does point out though is how weak some connections are, ie. Joey and Phoebe or Rachel and Chandler.
+                    </p>
+                </div>
             </div>
         );
     }

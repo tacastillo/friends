@@ -1,38 +1,38 @@
 {
-    "RACHEL": {
-        "neutral": 7198,
-        "negative": 495,
-        "total": 9434,
-        "positive": 1741
-    },
-    "CHANDLER": {
-        "neutral": 6757,
-        "negative": 483,
-        "total": 8621,
-        "positive": 1381
-    },
-    "MONICA": {
-        "neutral": 6804,
-        "negative": 467,
-        "total": 8618,
-        "positive": 1347
+    "PHOEBE": {
+        "neutral": 5688,
+        "positive": 1501,
+        "negative": 478,
+        "total": 7667
     },
     "JOEY": {
         "neutral": 6534,
+        "positive": 1443,
         "negative": 475,
-        "total": 8452,
-        "positive": 1443
-    },
-    "PHOEBE": {
-        "neutral": 5688,
-        "negative": 478,
-        "total": 7667,
-        "positive": 1501
+        "total": 8452
     },
     "ROSS": {
         "neutral": 7205,
+        "positive": 1559,
         "negative": 482,
-        "total": 9246,
-        "positive": 1559
+        "total": 9246
+    },
+    "MONICA": {
+        "neutral": 6804,
+        "positive": 1347,
+        "negative": 467,
+        "total": 8618
+    },
+    "CHANDLER": {
+        "neutral": 6757,
+        "positive": 1381,
+        "negative": 483,
+        "total": 8621
+    },
+    "RACHEL": {
+        "neutral": 7198,
+        "positive": 1741,
+        "negative": 495,
+        "total": 9434
     }
 }

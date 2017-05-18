@@ -7,7 +7,7 @@ export default class BubbleChart extends BaseChart {
         let defs = this.svg.append('defs')
         nodes.forEach((data) => {
             let diameter = data.r*2;
-            let imageUrl = require(data.data.image);
+            let imageUrl = require(`../assets/bubble-${data.data.name.toLowerCase()}.jpg`);
             defs.append('pattern')
                 .attr('id', `bubble-image-${data.data.name}`)
                 .attr('x', data.r)
@@ -47,11 +47,12 @@ export default class BubbleChart extends BaseChart {
             .data(children)
             .enter().append("g")
                 .attr("class", "node")
-                .attr("transform", d => { return `translate(${d.x}, ${d.y})`; });
+                .attr("transform", d => { return `translate(${d.x}, ${this.props.height+150})`; });
 
         this.node.append("svg:circle")
             .attr("r", node => { return node.r; })
             .attr("stroke", node => { return this.props.color(node.data.name)})
+            .attr("stroke-width", 2)
             .style("fill", node => { return `url(#bubble-image-${node.data.name}` })
             .on("mouseover", function(node) {
                 d3.select(this).transition().duration(200)
@@ -60,10 +61,25 @@ export default class BubbleChart extends BaseChart {
             })
             .on("mouseout", function(node) {
                 d3.select(this).transition().duration(200)
-                    .attr("stroke-width", 0)  
+                    .attr("stroke-width", 2)  
                 that.props.updateDetail({});
             });
+    }
 
-        d3.select(document.frameElement).style("height", `${this.props.height} px`);
+    update(props) {
+        let that = this;
+        if (props.inView) {
+            this.node.each(function(d,i) {
+                d3.select(this).transition().duration(1500 - 125*i)
+                    .style("opacity", 1)
+                    .attr("transform", d => { return `translate(${d.x}, ${d.y})`; });
+            });
+        } else {
+            this.node.each(function(d,i) {
+                d3.select(this).transition().duration(1250 - 125*i)
+                    .style("opacity", 0)
+                    .attr("transform", d => { return `translate(${d.x}, -150)`; });
+            });
+        }
     }
 }

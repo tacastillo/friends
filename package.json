@@ -6,8 +6,10 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "d3": "^4.8.0",
+    "d3-cloud": "^1.2.4",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-waypoint": "^7.0.3"
   },
   "devDependencies": {
     "gh-pages": "^0.12.0",

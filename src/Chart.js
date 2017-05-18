@@ -1,15 +1,19 @@
 import React from "react";
 
-import BubbleChart from "./BubbleChart";
-import ForceGraph from "./ForceGraph";
-import RadarChart from "./RadarChart";
+import BubbleChart from "./charts/BubbleChart";
+import ForceGraph from "./charts/ForceGraph";
+import RadarChart from "./charts/RadarChart";
+import WordCloud from "./charts/WordCloud";
+import SmallBubbles from "./charts/SmallBubbles";
 
 const classnames = require('classnames');
 
 const CHART_MAPPINGS = {
     bubble: BubbleChart,
     force: ForceGraph,
-    radar: RadarChart
+    radar: RadarChart,
+    cloud: WordCloud,
+    smallBubbles: SmallBubbles
 };
 
 export default class Chart extends React.Component {

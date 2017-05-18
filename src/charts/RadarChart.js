@@ -138,7 +138,8 @@ export default class RadarChart extends BaseChart{
 		let blobWrapper = g.selectAll(".radarWrapper")
 			.data(data)
 			.enter().append("g")
-			.attr("class", "radarWrapper");
+			.attr("class", "radarWrapper")
+			.attr("transform", "scale(0)");
 				
 		//Append the backgrounds	
 		blobWrapper
@@ -146,18 +147,8 @@ export default class RadarChart extends BaseChart{
 			.attr("class", "radarArea")
 			.attr("d", (d,i) => radarLine(d))
 			.style("fill", this.props.color)
-			.style("fill-opacity", config.opacityArea)
-			.on('mouseover', function (d,i){
-				// d3.select(this).transition().duration(200)
-				// 	.style("fill-opacity", 0.85);
-				// config.mouseOutFunction();
-			})
-			.on('mouseout', function(){
-				//Bring back all blobs
-				// d3.select(this).transition().duration(200)
-				// 	.style("fill-opacity", config.opacityArea);
-			});
-			
+			.style("fill-opacity", config.opacityArea);
+
 		//Create the outlines	
 		blobWrapper.append("path")
 			.attr("class", "radarStroke")
@@ -188,6 +179,12 @@ export default class RadarChart extends BaseChart{
 			.attr("class", "radarCircleWrapper");
 			
 		//Append a set of invisible circles on top for the mouseover pop-up
+		
+		//Set up the small tooltip for when you hover over a circle
+		let tooltip = g.append("text")
+			.attr("class", "tooltip")
+			.style("opacity", 0);
+		
 		blobCircleWrapper.selectAll(".radarInvisibleCircle")
 			.data(function(d,i) { return d; })
 			.enter().append("circle")
@@ -212,11 +209,6 @@ export default class RadarChart extends BaseChart{
 				tooltip.transition().duration(200)
 					.style("opacity", 0);
 			});
-			
-		//Set up the small tooltip for when you hover over a circle
-		let tooltip = g.append("text")
-			.attr("class", "tooltip")
-			.style("opacity", 0);
 		
 		/////////////////////////////////////////////////////////
 		/////////////////// Helper Function /////////////////////
@@ -249,5 +241,15 @@ export default class RadarChart extends BaseChart{
 			}
 		  });
 		}//wrap	
+	}
+
+	update(props) {
+        if (props.inView) {
+			this.svg.select(".radarWrapper").transition().duration(750)
+				.attr("transform", "scale(1)")
+        } else {
+			this.svg.select(".radarWrapper").transition().duration(750)
+				.attr("transform", "scale(0)")
+        }
 	}
 }//RadarChart

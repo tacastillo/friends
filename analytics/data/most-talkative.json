@@ -1,36 +1,35 @@
 [
 {
-    "name": "median",
-    "frequency": 0,
-    "words": 92350.5
+    "words": 92350.5,
+    "name": "median"
 },
 {
-    "name": "RACHEL",
     "frequency": 0.107,
-    "words": 102239
+    "words": 102239,
+    "name": "RACHEL"
 },
 {
-    "name": "ROSS",
     "frequency": 0.092,
-    "words": 100824
+    "words": 100824,
+    "name": "ROSS"
 },
 {
-    "name": "MONICA",
     "frequency": -0.045,
-    "words": 88174
+    "words": 88174,
+    "name": "MONICA"
 },
 {
-    "name": "CHANDLER",
     "frequency": -0.004,
-    "words": 91935
+    "words": 91935,
+    "name": "CHANDLER"
 },
 {
-    "name": "JOEY",
     "frequency": 0.004,
-    "words": 92766
+    "words": 92766,
+    "name": "JOEY"
 },
 {
-    "name": "PHOEBE",
     "frequency": -0.063,
-    "words": 86545
+    "words": 86545,
+    "name": "PHOEBE"
 }]

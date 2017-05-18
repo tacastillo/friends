@@ -1,5 +1,6 @@
 import * as d3 from "d3";
 import BaseChart from "./BaseChart";
+import { color } from "../constants.js";
 
 export default class ForceGraph extends BaseChart {
 
@@ -7,7 +8,7 @@ export default class ForceGraph extends BaseChart {
         let defs = this.svg.append('defs')
         nodes.forEach((data) => {
             let diameter = this.radius * 2 + 20;
-            let imageUrl = require(`./assets/bubble-${data.name.toLowerCase()}.jpg`);
+            let imageUrl = require(`../assets/bubble-${data.name.toLowerCase()}.jpg`);
             defs.append('pattern')
                 .attr('id', `network-image-${data.name}`)
                 .attr('x', this.radius+10)
@@ -29,6 +30,8 @@ export default class ForceGraph extends BaseChart {
         let that = this;
 
         this.radius = 55;
+        this.border = 4;
+        this.borderHighlight = 8;
 
         this.svg = d3.select(this.el).append("svg")
             .attr("width", this.props.width)
@@ -69,7 +72,8 @@ export default class ForceGraph extends BaseChart {
             .enter().append("path")
             .attr("stroke-width", data => `${data[3]/50}px`)
             .attr("class", "link")
-            .attr("stroke", data => that.props.color(data[0].name))
+            .attr("stroke", data => color(data[0].name))
+            // .attr("transform", "scale(0)")
             .on("mouseover", linkMouseOver)
             .on("mouseout", linkMouseOut);
 
@@ -79,7 +83,9 @@ export default class ForceGraph extends BaseChart {
             .attr("class", "node")
             .attr("id", data => `network-${data.name}`)
             .attr("r", this.radius)
-            .attr("stroke", node => that.props.color(node.name))
+            .attr("stroke", node => color(node.name))
+            .attr("stroke-width", this.border)
+            // .attr("transform", "scale(0)")
             .attr("fill", node => `url(#network-image-${node.name}`)
             .on("mouseover", function(node) {
                 that.props.setFocus(node.name);
@@ -87,10 +93,6 @@ export default class ForceGraph extends BaseChart {
             .on("mouseout", function(node) {
                 that.props.setFocus("");
             })
-            // .call(d3.drag()
-            //     .on("start", dragstarted)
-            //     .on("drag", dragged)
-            //     .on("end", dragended));
 
         simulation
             .nodes(nodes)
@@ -118,13 +120,13 @@ export default class ForceGraph extends BaseChart {
                 target = d3.select(`#network-${data[2].name}`);
             let path = d3.select(this);
             let currentWidth = +path.attr("stroke-width").slice(0, -2);
-            path.attr("stroke-width", `${ currentWidth + 5 }px`);
+            path.attr("stroke-width", `${ currentWidth + 4 }px`);
             source.transition()
                 .attr("r", that.radius+10)
-                .attr("stroke-width", 6);
+                .attr("stroke-width", that.borderHighlight);
             target.transition()
                 .attr("r", that.radius+10)
-                .attr("stroke-width", 6);
+                .attr("stroke-width", that.borderHighlight);
         }
 
         function linkMouseOut(data) {
@@ -132,48 +134,30 @@ export default class ForceGraph extends BaseChart {
                 target = d3.select(`#network-${data[2].name}`);
             let path = d3.select(this);
             let currentWidth = +path.attr("stroke-width").slice(0, -2);
-            path.attr("stroke-width", `${ currentWidth - 5 }px`);
+            path.attr("stroke-width", `${ currentWidth - 4 }px`);
             source.transition()
                 .attr("r", that.radius)
-                .attr("stroke-width", 2);
+                .attr("stroke-width", that.border);
             target.transition()
                 .attr("r", that.radius)
-                .attr("stroke-width", 2);
-        }
-
-        function dragstarted(d) {
-            if (!d3.event.active)
-                simulation.alphaTarget(0.3).restart();
-            d.fx = d.x
-            d.fy = d.y;
-        }
-
-        function dragged(d) {
-            d.fx = d3.event.x;
-            d.fy = d3.event.y;
-        }
-
-        function dragended(d) {
-            if (!d3.event.active)
-                simulation.alphaTarget(0);
-            d.fx = null;
-            d.fy = null;
+                .attr("stroke-width", that.border);
         }
     }
 
     update(props) {
+
         this.focus = props.focus;
         if (this.focus !== "") {
             let selection = this.svg.select(`#network-${this.focus}`);
             selection.transition()
                 .attr("r", this.radius+10)
-                .attr("stroke-width", 6);
+                .attr("stroke-width", this.borderHighlight);
             this.svg.selectAll(".link").transition()
                 .style("opacity", data => data[0].name === this.focus ? 1 : 0.15);
         } else {
             this.svg.selectAll("circle").transition()
                 .attr("r", this.radius)
-                .attr("stroke-width", 2);
+                .attr("stroke-width", this.border);
             this.svg.selectAll(".link").transition()
                 .style("opacity", 1);
         }

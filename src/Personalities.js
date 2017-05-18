@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
 import Chart from "./Chart";
-import { NAMES, toTitleCase, color } from "./constants";
+import { NAMES, color } from "./constants";
 
 import './stylesheets/Personalities.css';
 
-let summaryData = [
-	{xValue: "Front End", yValue: 0.75},
-	{xValue: "Back End", yValue: 0.6},
-	{xValue: "Theory", yValue: 0.4},
-	{xValue: "Analytics", yValue: 0.5},
-	{xValue: "Misc", yValue: 0.6},
-]
+let Waypoint = require('react-waypoint');
 
 class Personalities extends Component {
     constructor(props) {
         super(props);
         this.diameter = 225;
         this.margin = 50;
-        this.labelDistance = 1.2;
+        this.labelDistance = 1.23;
         let personalities = NAMES.map((name) => {
         	let data = require(`../analytics/data/personality-${name}.json`)["personality"];
         	let filteredTraits = [
@@ -27,6 +21,7 @@ class Personalities extends Component {
         		data[0]["children"][1], //artistic
         		data[4]["children"][5]  //stress
         	]
+            filteredTraits[0]["name"] = filteredTraits[0]["name"]; //placeholder
         	filteredTraits[1]["name"] = "Cheer";
         	filteredTraits[2]["name"] = "Duty";
         	filteredTraits[3]["name"] = "Artistry";
@@ -38,19 +33,27 @@ class Personalities extends Component {
         });
         this.state = {
         	personalities: personalities,
+            inView: false
         }
+    }
+
+    _scroll = () => {
+        this.setState(() => {
+            return {inView: !this.state.inView};
+        });
     }
 
     render() {
     	let radarCharts = this.state.personalities.map(personality => {
             return (
-	        	<div key={personality.name} className="personalityRadar">
-	        		<h2>{toTitleCase(personality.name)}</h2>
+	        	<div key={personality.name} className="flex-chart">
+	        		<h2>{personality.name}</h2>
 		            <Chart
 		                type={"radar"}
 		                height={this.diameter}
 		                width={this.diameter}
 		                margin={this.margin}
+                        inView={this.state.inView}
 		                labelDistance={this.labelDistance}
 		                color={color(personality.name)}
 		                data={[personality.traits]}
@@ -59,17 +62,29 @@ class Personalities extends Component {
     	});
         return (
             <div className="page">
-	            <h1>The One Where They Feel The Same Way</h1>
-	            <div className="personality-container">
-		            <div className="radar-container">
-		            	<div className="inline-container">
-			            	{radarCharts.slice(0,3)}
-		            	</div>
-		            	<div className="inline-container">
-			            	{radarCharts.slice(3,6)}
-		            	</div>
-	            	</div>
-            	</div>
+	            <h1>The One Where Their Personalities Match</h1>
+                <h4>Hover over a dot to show the percentage</h4>
+                <Waypoint
+                    onEnter={this._scroll}
+                    onLeave={this._scroll}
+                    topOffset={"70%"}
+                    bottomOffset={"40%"}>
+    	            <div className="flex-container">
+    		            <div className="flex-inner-container">
+    		            	<div className="inline-container radar-container">
+    			            	{radarCharts.slice(0,3)}
+    		            	</div>
+    		            	<div className="inline-container radar-container">
+    			            	{radarCharts.slice(3,6)}
+    		            	</div>
+    	            	</div>
+                	</div>
+                </Waypoint>
+                <div className="caption-container">
+                    <p className="caption">
+                        This visualization was more or less for fun than actual statistical value or analysis, but what I discovered from the results was actually fascinating. Running through a shuffled corpus of every line said by a character through IBM Watson&#39;s Personality Insights API, I was given back three dozen personality traits deduced from the text. The most interesting analysis out of all of this was that, based on what they say, all of the friends have very similar similarities, with almost always a tight standard deviation. This could have a variety of meanings that can be observed later one.
+                    </p>
+                </div>
             </div>
         );
     }
