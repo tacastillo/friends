@@ -57,7 +57,7 @@ class NetworkPage extends Component {
         return (
             <div className="network page">
 	        	<h1>The One Where They Talk To Each Other</h1>
-	        	<h4>Hover over each friend's bubble or name to see highlight their connections with others</h4>
+	        	<h4>Hover over each friend's bubble or name to highlight their connections with others</h4>
 	        	<div className="chart-container">
 		            <Chart
 		            	className="network-chart"

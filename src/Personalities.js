@@ -82,7 +82,7 @@ class Personalities extends Component {
                 </Waypoint>
                 <div className="caption-container">
                     <p className="caption">
-                        This visualization was more or less for fun than actual statistical value or analysis, but what I discovered from the results was actually fascinating. Running through a shuffled corpus of every line said by a character through IBM Watson&#39;s Personality Insights API, I was given back three dozen personality traits deduced from the text. The most interesting analysis out of all of this was that, based on what they say, all of the friends have very similar similarities, with almost always a tight standard deviation. This could have a variety of meanings that can be observed later one.
+                        This visualization was more or less for fun than actual statistical value or analysis, but what I discovered from the results was actually fascinating. Running through a shuffled corpus of every line said by a character through IBM Watson&#39;s Personality Insights API, I was given back three dozen personality traits deduced from the text. The most interesting analysis out of all of this was that, based on what they say, all of the friends have very similar similarities, with almost always a tight standard deviation. This could have a variety of meanings that can be observed later on.
                     </p>
                 </div>
             </div>

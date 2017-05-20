@@ -1,5 +1,7 @@
 .cloud-label {
   margin-left: 18px; }
 
-.small-bubble-container div {
-  margin-left: 0px; }
+.small-bubble-container {
+  margin-top: 100px; }
+  .small-bubble-container div {
+    margin-left: 0px; }

@@ -38,7 +38,7 @@ class CommonPhrases extends Component {
 	                            <Chart
 	                                type={"smallBubbles"}
 	                                width={600}
-	                                height={650}
+	                                height={750}
 	                                inView={this.state.inView}
 	                                data={this.bubbleData}
 	                            />
